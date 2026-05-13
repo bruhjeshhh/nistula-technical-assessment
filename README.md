@@ -212,7 +212,7 @@ pytest -v
 
 Classifier, normaliser, action logic, validation, health, and one AI-error case run **without** calling Anthropic.
 
-**Live Claude tests** (`TestWebhookEndpointLive`, marked `integration`) call the real API. They run when `ANTHROPIC_API_KEY` is set (e.g. in `.env` at the repo root, loaded by the test module). If the key is missing, those tests are **skipped**.
+**Live Claude tests** (`TestWebhookEndpointLive`, marked `integration`) always call the real Anthropic API when you run the full suite. They load `ANTHROPIC_API_KEY` from the environment or from `.env` at the **repository root** (same as `main.py`). If the key is missing, those three tests **fail** with a clear message so a green `pytest` run means the live path actually worked.
 
 Run only fast tests (skip live API):
 

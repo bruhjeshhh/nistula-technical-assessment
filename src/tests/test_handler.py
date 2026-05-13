@@ -1,8 +1,9 @@
 """
 Tests for the classifier, normaliser, action logic, and the webhook endpoint.
 
-Webhook tests that call Claude use the live Anthropic API. Set ANTHROPIC_API_KEY
-in the environment or in a project `.env` file (loaded via dotenv below).
+Webhook tests in `TestWebhookEndpointLive` call the real Anthropic API. A full `pytest`
+run expects `ANTHROPIC_API_KEY` in the environment or in `.env` at the **repository root**
+(loaded below). Use `pytest -m "not integration"` to skip those tests when working offline.
 """
 
 import os
@@ -15,10 +16,11 @@ import pytest
 from dotenv import load_dotenv
 from fastapi.testclient import TestClient
 
-_tests_dir = Path(__file__).resolve().parent
-_repo_root = _tests_dir.parent.parent
+# test_handler.py lives at repo/src/tests/ — repo root is three levels up from this file
+_repo_root = Path(__file__).resolve().parents[2]
+_src_root = Path(__file__).resolve().parents[1]
 load_dotenv(_repo_root / ".env")
-load_dotenv(_tests_dir.parent / ".env")
+load_dotenv(_src_root / ".env", override=True)
 
 from app.app import create_app
 from app.models.schemas import (
@@ -41,10 +43,12 @@ def client():
 
 @pytest.fixture
 def require_live_api():
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        pytest.skip(
-            "ANTHROPIC_API_KEY is not set — export it or add it to `.env` to run live webhook tests."
-        )
+    key = (os.getenv("ANTHROPIC_API_KEY") or "").strip()
+    assert key, (
+        "ANTHROPIC_API_KEY is required for live webhook tests (real Anthropic API). "
+        "Copy `.env.example` to `.env` at the repository root and set your key, "
+        "or run only offline tests: pytest -m 'not integration'"
+    )
 
 
 def make_payload(**overrides) -> dict:
