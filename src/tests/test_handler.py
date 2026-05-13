@@ -8,13 +8,17 @@ in the environment or in a project `.env` file (loaded via dotenv below).
 import os
 import re
 from datetime import datetime, timezone
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 from dotenv import load_dotenv
 from fastapi.testclient import TestClient
 
-load_dotenv()
+_tests_dir = Path(__file__).resolve().parent
+_repo_root = _tests_dir.parent.parent
+load_dotenv(_repo_root / ".env")
+load_dotenv(_tests_dir.parent / ".env")
 
 from app.app import create_app
 from app.models.schemas import (

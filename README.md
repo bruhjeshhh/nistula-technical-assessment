@@ -2,7 +2,7 @@
 
 A FastAPI backend that receives inbound guest messages from multiple channels, normalises them into a unified schema, drafts a reply using the Claude API, and returns a confidence-scored response with a recommended action.
 
-**What’s in this repo (assessment):** Part 1 lives under `app/` with `main.py` as the entrypoint; Part 2 is `schema.sql`; Part 3 is `thinking.md`; copy `.env.example` to `.env` for local runs (no secrets in git).
+**What’s in this repo (assessment):** Part 1 lives under `src/` (FastAPI webhook); Part 2 is `schema.sql`; Part 3 is `thinking.md`; copy `.env.example` to `.env` at the repo root for local runs (no secrets in git).
 
 ---
 
@@ -14,16 +14,17 @@ A FastAPI backend that receives inbound guest messages from multiple channels, n
 # 1. Clone / unzip the project
 cd nistula-technical-assessment
 
-# 2. Create and activate a virtual environment (Python 3.11 / 3.12)
+# 2. Configure environment (repo root — loaded by main.py and tests)
+cp .env.example .env
+# Edit .env and set ANTHROPIC_API_KEY=<your key>
+
+# 3. Create and activate a virtual environment (Python 3.11 / 3.12)
+cd src
 python3.12 -m venv venv
 source venv/bin/activate         # Windows: venv\Scripts\activate
 
-# 3. Install dependencies
+# 4. Install dependencies
 pip install -r requirements.txt
-
-# 4. Configure environment
-cp .env.example .env
-# Edit .env and set ANTHROPIC_API_KEY=<your key>
 
 # 5. Run the server
 python main.py
@@ -35,6 +36,8 @@ python main.py
 ---
 
 ## Example Request
+
+Run `curl` from any directory (server must be up as above):
 
 ```bash
 curl -X POST http://localhost:8000/webhook/message \
@@ -94,28 +97,30 @@ POST /webhook/message
 
 ```
 nistula-technical-assessment/
-├── main.py                         Entry point (uvicorn)
-├── requirements.txt
-├── pytest.ini                      Registers the `integration` test marker
-├── schema.sql                      Part 2 — PostgreSQL DDL with inline comments
-├── thinking.md                     Part 3 — written scenario answers
-├── .env.example                    Copy to .env and fill in your key
-├── .gitignore                      Keeps .env, venv/, __pycache__ out of git
-├── app/
-│   ├── app.py                      FastAPI app factory, /health route
-│   ├── models/
-│   │   └── schemas.py              Pydantic models & enums
-│   ├── routes/
-│   │   └── webhook.py              POST /webhook/message handler
-│   ├── services/
-│   │   ├── classifier.py           Rule-based query classifier
-│   │   ├── normaliser.py           Per-channel field adapters
-│   │   └── ai_service.py           Claude API client
-│   └── utils/
-│       ├── action.py               Confidence → action mapping
-│       └── property_context.py     Property data & prompt formatter
-└── tests/
-    └── test_handler.py             Unit tests + live API integration tests
+├── README.md
+├── schema.sql                    Part 2 — PostgreSQL DDL with inline comments
+├── thinking.md                   Part 3 — written scenario answers
+├── .env.example                  Copy to `.env` at repo root
+├── .gitignore
+├── pytest.ini                    pythonpath=test discovery from repo root
+└── src/                          Part 1 — webhook service
+    ├── main.py                   Entry point (uvicorn)
+    ├── requirements.txt
+    ├── app/
+    │   ├── app.py                FastAPI app factory, /health route
+    │   ├── models/
+    │   │   └── schemas.py      Pydantic models & enums
+    │   ├── routes/
+    │   │   └── webhook.py      POST /webhook/message handler
+    │   ├── services/
+    │   │   ├── classifier.py   Rule-based query classifier
+    │   │   ├── normaliser.py   Per-channel field adapters
+    │   │   └── ai_service.py   Claude API client
+    │   └── utils/
+    │       ├── action.py       Confidence → action mapping
+    │       └── property_context.py
+    └── tests/
+        └── test_handler.py     Unit tests + live API integration tests
 ```
 
 ### Endpoints
@@ -199,24 +204,26 @@ The assessment scope is a single stateless request–response cycle. State (mess
 
 ## Running Tests
 
+From the **repository root** (uses `pytest.ini` to point at `src/`):
+
 ```bash
-pytest tests/ -v
+pytest -v
 ```
 
 Classifier, normaliser, action logic, validation, health, and one AI-error case run **without** calling Anthropic.
 
-**Live Claude tests** (`TestWebhookEndpointLive`, marked `integration`) call the real API. They run when `ANTHROPIC_API_KEY` is set (e.g. in `.env`, loaded automatically by the test module via `python-dotenv`). If the key is missing, those tests are **skipped**.
+**Live Claude tests** (`TestWebhookEndpointLive`, marked `integration`) call the real API. They run when `ANTHROPIC_API_KEY` is set (e.g. in `.env` at the repo root, loaded by the test module). If the key is missing, those tests are **skipped**.
 
 Run only fast tests (skip live API):
 
 ```bash
-pytest tests/ -v -m "not integration"
+pytest -v -m "not integration"
 ```
 
 Run everything including live API (needs key + network):
 
 ```bash
-pytest tests/ -v
+pytest -v
 ```
 
 Tests cover:
