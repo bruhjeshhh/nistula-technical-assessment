@@ -1,0 +1,4 @@
+txn_id,account_id,txn_date,amount,currency,txn_type,description
+T-1002,ACC-001,2025-03-14,-1434.64,USD,DEBIT,Rent
+T-1001,ACC-003,2025-01-08,-65.56,USD,DEBIT,Rent
+T-4001,ACC-001,2025-03-20,999.00,INR,CREDIT,Late arrival

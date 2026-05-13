@@ -1,0 +1,232 @@
+{
+  "batch_id": "B-2025-03-A",
+  "record_count": 25,
+  "control_total": 12291.07,
+  "records": [
+    {
+      "transactionId": "T-3001",
+      "accountNumber": "ACC-002",
+      "postedAt": "2025-01-10T09:30:00Z",
+      "amount": -1280.77,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Salary"
+    },
+    {
+      "transactionId": "T-3002",
+      "accountNumber": "ACC-001",
+      "postedAt": "2025-03-11T09:30:00Z",
+      "amount": -1426.33,
+      "currencyCode": "USD",
+      "direction": "D",
+      "memo": "Dining"
+    },
+    {
+      "transactionId": "T-3003",
+      "accountNumber": "ACC-002",
+      "postedAt": "2025-01-17T09:30:00Z",
+      "amount": -1397.31,
+      "currencyCode": "USD",
+      "direction": "D",
+      "memo": "Groceries"
+    },
+    {
+      "transactionId": "T-3004",
+      "accountNumber": "ACC-002",
+      "postedAt": "2025-02-04T09:30:00Z",
+      "amount": "456.31",
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Dining"
+    },
+    {
+      "transactionId": "T-3005",
+      "accountNumber": "ACC-001",
+      "postedAt": "2025-03-03T09:30:00Z",
+      "amount": 3216.99,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Dining"
+    },
+    {
+      "transactionId": "T-3006",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-01-22T09:30:00Z",
+      "amount": -834.34,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Utility bill"
+    },
+    {
+      "transactionId": "T-3007",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-02-11T09:30:00Z",
+      "amount": 786.17,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Rent"
+    },
+    {
+      "transactionId": "T-3008",
+      "accountNumber": "ACC-005",
+      "postedAt": "2025-01-03T09:30:00Z",
+      "amount": "3356.66",
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Subscription"
+    },
+    {
+      "transactionId": "T-3009",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-01-08T09:30:00Z",
+      "amount": 4992.96,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Groceries"
+    },
+    {
+      "transactionId": "T-3010",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-03-26T09:30:00Z",
+      "amount": -1429.01,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Salary"
+    },
+    {
+      "transactionId": "T-3011",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-03-04T09:30:00Z",
+      "amount": -1458.85,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Groceries"
+    },
+    {
+      "transactionId": "T-3012",
+      "accountNumber": "ACC-001",
+      "postedAt": "2025-03-18T09:30:00Z",
+      "amount": "4764.65",
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Refund"
+    },
+    {
+      "transactionId": "T-3013",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-01-22T09:30:00Z",
+      "amount": -1886.17,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Refund"
+    },
+    {
+      "transactionId": "T-3014",
+      "accountNumber": "ACC-001",
+      "postedAt": "2025-01-21T09:30:00Z",
+      "amount": -663.29,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Refund"
+    },
+    {
+      "transactionId": "T-3015",
+      "accountNumber": "ACC-002",
+      "postedAt": "2025-03-09T09:30:00Z",
+      "amount": 1848.79,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Insurance"
+    },
+    {
+      "transactionId": "T-3016",
+      "accountNumber": "ACC-005",
+      "postedAt": "2025-01-04T09:30:00Z",
+      "amount": "-1126.15",
+      "currencyCode": "USD",
+      "direction": "D",
+      "memo": "Cash deposit"
+    },
+    {
+      "transactionId": "T-3017",
+      "accountNumber": "ACC-001",
+      "postedAt": "2025-02-19T09:30:00Z",
+      "amount": -1435.23,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Fuel"
+    },
+    {
+      "transactionId": "T-3018",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-01-12T09:30:00Z",
+      "amount": 1716.16,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Utility bill"
+    },
+    {
+      "transactionId": "T-3019",
+      "accountNumber": "ACC-005",
+      "postedAt": "2025-02-20T09:30:00Z",
+      "amount": -932.14,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Utility bill"
+    },
+    {
+      "transactionId": "T-3020",
+      "accountNumber": "ACC-004",
+      "postedAt": "2025-01-06T09:30:00Z",
+      "amount": "-469.13",
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Transfer in"
+    },
+    {
+      "transactionId": "T-1010",
+      "accountNumber": "ACC-003",
+      "postedAt": "2025-01-12T09:30:00Z",
+      "amount": 2477.17,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Invoice payment"
+    },
+    {
+      "transactionId": "T-1020",
+      "accountNumber": "ACC-005",
+      "postedAt": "2025-02-25T09:30:00Z",
+      "amount": -1791.06,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Rent"
+    },
+    {
+      "transactionId": "T-3901",
+      "accountNumber": "ACC-002",
+      "postedAt": "2025-02-06T09:30:00Z",
+      "amount": null,
+      "currencyCode": "INR",
+      "direction": "D",
+      "memo": "Rent"
+    },
+    {
+      "transactionId": "T-3902",
+      "accountNumber": "ACC-004",
+      "postedAt": "2025-01-07T09:30:00Z",
+      "amount": 303.02,
+      "currencyCode": "INR",
+      "direction": "X",
+      "memo": "Insurance"
+    },
+    {
+      "transactionId": "T-3903",
+      "accountNumber": "ACC-002",
+      "postedAt": "yesterday",
+      "amount": 4401.97,
+      "currencyCode": "INR",
+      "direction": "C",
+      "memo": "Fuel"
+    }
+  ]
+}
